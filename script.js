@@ -1,4 +1,4 @@
-// 1. إعدادات Tailwind (تخصيص الألوان والخلفيات الخاصة بمبادرة بعد ثالث)
+// 1. إعدادات Tailwind (تخصيص الألوان)
 tailwind.config = {
     theme: {
         extend: {
@@ -15,84 +15,121 @@ tailwind.config = {
     }
 }
 
-// 2. وظائف العداد التفاعلي (Counter) والقائمة عند تحميل الصفحة
 document.addEventListener('DOMContentLoaded', () => {
+    
+    // --- 2. تهيئة العدادات (Counters) ---
     const counters = document.querySelectorAll('#achievements h4');
-
-    // وظيفة تشغيل العداد بحركة سلسة وبطيئة
     const startCounters = (entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 const counter = entry.target;
-                
-                // استخراج الرقم المستهدف من النص (مثلاً +500 تصبح 500)
                 const target = parseInt(counter.getAttribute('data-target'));
                 let count = 0;
-                
-                // إعدادات السرعة (تم تعديلها لتكون أبطأ وأكثر سلاسة)
-                const speed = 100; // عدد الخطوات (كلما زاد الرقم كان العداد أبطأ)
-                const inc = target / speed; // مقدار الزيادة في كل خطوة
+                const speed = 100;
+                const inc = target / speed;
 
                 const updateCount = () => {
                     if (count < target) {
                         count += inc;
                         let currentShow = Math.ceil(count);
-                        
-                        // إعادة دمج العلامات (+ أو %) أثناء العد
-                        if (counter.hasAttribute('data-plus')) {
-                            counter.innerText = '+' + currentShow;
-                        } else if (counter.hasAttribute('data-percent')) {
-                            counter.innerText = currentShow + '%';
-                        } else {
-                            counter.innerText = currentShow;
-                        }
-                        
-                        // الوقت الفاصل بين كل رقم (15ms تعطي سلاسة ممتازة للعين)
+                        counter.innerText = (counter.hasAttribute('data-plus') ? '+' : '') + currentShow + (counter.hasAttribute('data-percent') ? '%' : '');
                         setTimeout(updateCount, 15);
                     } else {
-                        // تثبيت الرقم النهائي بدقة عند انتهاء العد
                         counter.innerText = (counter.hasAttribute('data-plus') ? '+' : '') + target + (counter.hasAttribute('data-percent') ? '%' : '');
                     }
                 };
-                
                 updateCount();
-                // التوقف عن مراقبة العنصر بعد تشغيله مرة واحدة لضمان الأداء
                 observer.unobserve(counter);
             }
         });
     };
 
-    // مراقب التمرير (Intersection Observer) لفتح العداد عند الوصول إليه
-    const observer = new IntersectionObserver(startCounters, {
-        threshold: 0.2 // يبدأ العداد عندما يظهر 20% من قسم الإنجازات
-    });
-
-    // تجهيز كل عداد قبل بدء الحركة
+    const counterObserver = new IntersectionObserver(startCounters, { threshold: 0.2 });
     counters.forEach(counter => {
         const originalText = counter.innerText;
-        // حفظ الرقم الأصلي في سمة (attribute) لاستخدامه في الحساب
         counter.setAttribute('data-target', originalText.replace(/[^0-9]/g, ''));
-        
-        // التحقق من وجود علامات مرافقة للرقم
         if (originalText.includes('+')) counter.setAttribute('data-plus', 'true');
         if (originalText.includes('%')) counter.setAttribute('data-percent', 'true');
-        
-        // تصفير النص للبدء من الصفر
         counter.innerText = '0';
-        observer.observe(counter);
+        counterObserver.observe(counter);
     });
 
-    // 3. إغلاق قائمة الموبايل تلقائياً عند الضغط على الروابط
-    document.querySelectorAll('nav a').forEach(link => {
-        link.addEventListener('click', () => {
-            // التحقق من وجود AlpineJS وإغلاق القائمة الجانبية
-            if (window.Alpine) {
-                const body = document.querySelector('body');
-                const data = Alpine.$data(document.querySelector('[x-data]'));
-                if (data) {
-                    data.mobileMenu = false;
+    // --- 3. نظام التنبيهات المخصص (The Notification System) ---
+    const showNotification = (message, type) => {
+        const toast = document.createElement('div');
+        toast.className = `fixed bottom-5 right-5 p-6 rounded-2xl shadow-2xl z-[2000] animate__animated animate__fadeInRight 
+                          ${type === 'success' ? 'bg-navy text-white border-r-8 border-gold-primary' : 'bg-red-600 text-white border-r-8 border-white'}`;
+        
+        toast.innerHTML = `
+            <div class="flex items-center gap-4 text-right" dir="rtl">
+                <i class="bi ${type === 'success' ? 'bi-check-circle-fill text-gold-primary' : 'bi-exclamation-triangle-fill'} text-2xl"></i>
+                <div>
+                    <h4 class="font-black italic">إشعار ${type === 'success' ? 'رسمي' : 'خطأ'}</h4>
+                    <p class="text-sm opacity-90">${message}</p>
+                </div>
+            </div>
+        `;
+        document.body.appendChild(toast);
+        setTimeout(() => {
+            toast.classList.replace('animate__fadeInRight', 'animate__fadeOutRight');
+            setTimeout(() => toast.remove(), 1000);
+        }, 5000);
+    };
+
+    // --- 4. معالجة إرسال الفورم (الباك اند الحقيقي) ---
+    const contactForm = document.getElementById('mainContactForm');
+    if (contactForm) {
+        contactForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const submitBtn = contactForm.querySelector('button[type="submit"]');
+            const phoneInput = contactForm.querySelector('input[name="user_phone"]');
+            const phoneValue = phoneInput ? phoneInput.value.trim() : "";
+
+            // التحقق من رقم الهاتف
+            if (phoneValue.length < 11) {
+                phoneInput.classList.add('ring-2', 'ring-red-500', 'animate__animated', 'animate__headShake');
+                showNotification("يرجى إدخال رقم هاتف صحيح (11 رقم)", "error");
+                setTimeout(() => {
+                    phoneInput.classList.remove('ring-2', 'ring-red-500', 'animate__animated', 'animate__headShake');
+                }, 2000);
+                return;
+            }
+
+            // بداية الإرسال الحقيقي
+            const originalText = submitBtn.innerHTML;
+            submitBtn.innerHTML = `<i class="bi bi-arrow-repeat animate-spin"></i> جاري تأمين الإرسال...`;
+            submitBtn.disabled = true;
+
+            const formData = new FormData(contactForm);
+
+            try {
+                // استبدل ID_HERE بالكود اللي خدته من Formspree
+                const response = await fetch("https://formspree.io/f/mzdapbww", {
+                    method: "POST",
+                    body: formData,
+                    headers: { 'Accept': 'application/json' }
+                });
+
+                if (response.ok) {
+                    showNotification("تم استلام طلبك بنجاح في المكتب الفني للمبادرة.", "success");
+                    contactForm.reset();
+                } else {
+                    showNotification("عفواً، فشل الإرسال. تأكد من إعدادات السيرفر.", "error");
                 }
+            } catch (error) {
+                showNotification("خطأ في الاتصال، تأكد من الإنترنت وحاول مجدداً.", "error");
+            } finally {
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
             }
         });
-    });
+    }
+
+    // --- 5. إغلاق قائمة الموبايل وتهيئة AOS ---
+    if (typeof AOS !== 'undefined') {
+        AOS.init({ duration: 1200, once: true });
+    }
+
+    console.log("%c بعد ثالث: تم تفعيل الأنظمة الذكية بنجاح ", "background: #001F3F; color: #D4AF37; font-size: 14px; font-weight: bold;");
 });
