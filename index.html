@@ -3,7 +3,7 @@
 
 <head>
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://1mahmoudelshora1-boop.github.io/ylf/">
+<meta property="og:url" content="https://res.cloudinary.com/du1dtloi0/image/upload/v1770149290/5_lk6uaz.ico">
 <meta property="og:title" content="مبادرة بعد ثالث | اللجنة العلمية بكفر الشيخ">
 <meta property="og:description"
     content="المعرفة شرارة.. الابتكار مسار.. والأثر غاية. انضم إلينا في رحلة صناعة الأثر والبحث العلمي.">
@@ -417,6 +417,89 @@
             </div>
         </div>
     </section>
+       <section id="contact" class="py-24 bg-gray-100">
+        <div class="container mx-auto px-6">
+            <div
+                class="max-w-6xl mx-auto bg-white rounded-[50px] shadow-2xl overflow-hidden flex flex-col lg:flex-row border border-gray-100">
+                <div class="lg:w-1/3 bg-navy p-12 text-white relative">
+                    <div class="relative z-10">
+                        <h3 class="text-4xl font-black mb-8 italic">تواصل معنا <br> بشكل رسمي</h3>
+                        <p class="text-gray-300 mb-12 leading-loose font-light">
+                            نحن هنا لاستقبال مقترحات الشراكة، طلبات الانضمام، أو أي استفسارات تخص المبادرة العلمية.
+                        </p>
+                        <ul class="space-y-8">
+                            <li class="flex items-center gap-6 group">
+                                <div
+                                    class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center group-hover:bg-gold-primary transition">
+                                    <i class="bi bi-geo-alt"></i>
+                                </div>
+                                <span>ديوان عام المحافظة - الدور الرابع</span>
+                            </li>
+                            <li class="flex items-center gap-6 group">
+                                <div
+                                    class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center group-hover:bg-gold-primary transition">
+                                    <i class="bi bi-envelope-at"></i>
+                                </div>
+                                <span>contact@sci-gov.com</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div
+                        class="absolute -bottom-20 -left-20 w-64 h-64 bg-gold-primary rounded-full blur-[80px] opacity-20">
+                    </div>
+                </div>
+
+                <div class="lg:w-2/3 p-12 lg:p-20">
+<form id="mainContactForm" class="space-y-6">
+    <div class="grid md:grid-cols-2 gap-6">
+        <div class="space-y-2">
+            <label class="font-black text-navy px-2 italic text-xs tracking-widest">الاسم بالكامل</label>
+            <input type="text" name="user_name" required placeholder="أدخل اسمك الثلاثي"
+                class="w-full bg-gray-50 border-none p-5 rounded-2xl focus:ring-4 ring-gold-primary/20 transition-all outline-none">
+        </div>
+
+        <div class="space-y-2">
+            <label class="font-black text-navy px-2 italic text-xs tracking-widest">رقم الهاتف (واتساب)</label>
+            <input type="tel" name="user_phone" required placeholder="01XXXXXXXXX" dir="ltr"
+                class="w-full bg-gray-50 border-none p-5 rounded-2xl focus:ring-4 ring-gold-primary/20 transition-all outline-none text-right">
+        </div>
+
+        <div class="space-y-2">
+            <label class="font-black text-navy px-2 italic text-xs tracking-widest">نوع الطلب</label>
+            <select name="request_type" required
+                class="w-full bg-gray-50 border-none p-5 rounded-2xl focus:ring-4 ring-gold-primary/20 transition-all outline-none cursor-pointer">
+                <option value="" disabled selected>اختر نوع الطلب</option>
+                <option value="انضمام">طلب انضمام للمبادرة</option>
+                <option value="شراكة">طلب شراكة استراتيجية</option>
+                <option value="اقتراح">اقتراح مشروع علمي</option>
+                <option value="استفسار">استفسار عام</option>
+            </select>
+        </div>
+
+        <div class="space-y-2">
+            <label class="font-black text-navy px-2 italic text-xs tracking-widest">موضوع الرسالة</label>
+            <input type="text" name="subject" required placeholder="عنوان مختصر لرسالتك"
+                class="w-full bg-gray-50 border-none p-5 rounded-2xl focus:ring-4 ring-gold-primary/20 transition-all outline-none">
+        </div>
+    </div>
+
+    <div class="space-y-2">
+        <label class="font-black text-navy px-2 italic text-xs tracking-widest">التفاصيل / المحتوى</label>
+        <textarea name="message_content" rows="4" required placeholder="اكتب تفاصيل طلبك هنا بوضوح..."
+            class="w-full bg-gray-50 border-none p-5 rounded-2xl focus:ring-4 ring-gold-primary/20 transition-all outline-none"></textarea>
+    </div>
+
+    <button type="submit"
+        class="w-full bg-navy text-white p-6 rounded-2xl font-black text-xl hover:bg-royal-blue transition-all shadow-xl shadow-navy/20 flex items-center justify-center gap-4 group">
+        إرسال الطلب الرسمي
+        <i class="bi bi-send group-hover:translate-x-[-5px] group-hover:translate-y-[-5px] transition-transform"></i>
+    </button>
+</form>
+                </div>
+            </div>
+        </div>
+    </section>
+
 
     <footer id="contact" class="bg-navy pt-20 pb-10 text-white">
         <div class="container mx-auto px-6 grid md:grid-cols-3 gap-12 border-b border-gray-700 pb-12">
@@ -466,6 +549,5 @@
         AOS.init({ duration: 1000, once: true });
     </script>
 </body>
-
 
 </html>
