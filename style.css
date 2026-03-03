@@ -1,11 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap');
 
 /* الإعدادات الأساسية التي أرسلتها */
+/* حل مشكلة المساحة البيضاء والإزاحة الجانبية */
 html, body {
-    max-width: 100%;
-    overflow-x: hidden; /* بيخفي أي مساحة بيضاء بتظهر بالعرض */
+    width: 100%;
     margin: 0;
     padding: 0;
+    overflow-x: hidden; /* أهم سطر: بيخفي أي عنصر خارج حدود العرض */
+    position: relative;
+}
+
+/* التأكد من أن الناف بار لا يتجاوز عرض الشاشة */
+nav, .navbar {
+    width: 100% !important;
+    left: 0 !important;
+    right: 0 !important;
+    box-sizing: border-box;
 }
 body {
     font-family: 'Cairo', sans-serif;
