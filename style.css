@@ -1,6 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap');
 
 /* الإعدادات الأساسية التي أرسلتها */
+html, body {
+    max-width: 100%;
+    overflow-x: hidden; /* بيخفي أي مساحة بيضاء بتظهر بالعرض */
+    margin: 0;
+    padding: 0;
+}
 body {
     font-family: 'Cairo', sans-serif;
     scroll-behavior: smooth;
