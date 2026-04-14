@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap');
+
+body {
+    font-family: 'Cairo', sans-serif;
+    text-align: right;
+}
+
+/* هيدر بتأثير فني ناعم */
+.art-header {
+    background: radial-gradient(circle at top right, #fdf2f8, #faf5ff);
+}
+
+/* ستايل الناف بار لـ Page 4 */
+.active-nav-4.scrolled > div {
+    background: rgba(255, 255, 255, 0.9);
+    border-color: #d8b4fe;
+    box-shadow: 0 20px 40px rgba(139, 92, 246, 0.1);
+}
+
+/* كروت الأهداف - حركات إبداعية */
+.art-goal-card {
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.art-goal-card:hover {
+    transform: scale(1.05) rotate(2deg);
+}
+
+/* سكرول بار ملون */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-thumb { background: #9333ea; border-radius: 10px; }

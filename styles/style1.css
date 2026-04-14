@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap');
+
+body { font-family: 'Cairo', sans-serif; }
+
+/* تدرج علم مصر المضيء لكلمة هويتي */
+.hawiyati-egypt {
+    background: linear-gradient(to left, #ff0000 30%, #ffffff 50%, #555555 70%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
+}
+
+/* خلفية المكعبات من ملفك الأصلي */
+.bg-hero-pattern {
+    background-image: url('https://www.transparenttextures.com/patterns/cubes.png');
+    background-size: 100px;
+}
+
+@keyframes bg-move {
+    from { background-position: 0 0; }
+    to { background-position: 100px 100px; }
+}
+.animate-bg-move { animation: bg-move 20s linear infinite; }
+
+/* تحسين السكرول بار */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-thumb { background: #D4AF37; border-radius: 10px; }

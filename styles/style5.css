@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap');
+
+body {
+    font-family: 'Cairo', sans-serif;
+    text-align: right;
+    letter-spacing: -0.5px;
+}
+
+/* هيدر الطاقة */
+.sport-header {
+    background: linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 1)), url('https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&q=80');
+    background-size: cover;
+    background-position: center;
+}
+
+/* ستايل الناف بار */
+.active-nav-5.scrolled > div {
+    background: rgba(0, 0, 0, 0.9) !important;
+    border-color: #dc2626;
+    transform: translateY(-5px);
+}
+
+/* كروت الأهداف - حركات حادة */
+.sport-goal-card {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.sport-goal-card::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 0;
+    height: 4px;
+    background: #dc2626;
+    transition: width 0.3s ease;
+}
+
+.sport-goal-card:hover::before {
+    width: 100%;
+}
+
+.sport-goal-card:hover {
+    background: #1e293b;
+    transform: skewY(-2deg);
+}
+
+/* سكرول بار أحمر */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-thumb { background: #dc2626; }
+::-webkit-scrollbar-track { background: #0f172a; }

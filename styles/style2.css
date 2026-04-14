@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap');
+
+:root {
+    --social-navy: #001F3F; /* كحلي أساسي */
+    --social-gold: #D4AF37; /* ذهبي أساسي */
+    --social-peach: #FF7F50; /* برتقالي مرجاني للتمكين (Salmon Coral) */
+    --social-sky: #E3F2FD; /* أزرق سماوي ناعم للخلفية */
+}
+
+body {
+    font-family: 'Cairo', sans-serif;
+    text-align: right;
+}
+
+/* ستايل الناف بار لـ Page 2 - تأثير زجاجي ملون */
+.active-nav-2 {
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.active-nav-2.scrolled {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.active-nav-2.scrolled > div {
+    background: rgba(0, 31, 63, 0.95); /* كحلي غامق شفاف */
+    backdrop-filter: blur(15px);
+    border-color: var(--social-gold);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+
+.active-nav-2.scrolled h1 { color: white; }
+
+/* هيدر الصفحة بتدرج لوني اجتماعي ونفسي */
+.social-header-2 {
+    background: linear-gradient(135deg, var(--social-navy) 0%, #003366 100%);
+    position: relative;
+}
+
+/* الألوان الثانوية في الـ HTML */
+.text-social-navy { color: var(--social-navy); }
+.text-social-gold { color: var(--social-gold); }
+.text-social-peach { color: var(--social-peach); }
+.bg-social-navy { background-color: var(--social-navy); }
+.bg-social-gold { background-color: var(--social-gold); }
+.bg-social-peach { background-color: var(--social-peach); }
+.border-social-gold { border-color: var(--social-gold); }
+.border-social-peach { border-color: var(--social-peach); }
+
+/* تأثير الأشكال العائمة في الخلفية في الهيدر */
+.bg-hero-pattern {
+    background-image: url('https://www.transparenttextures.com/patterns/pentagon.png');
+    pointer-events: none;
+}
+
+/* ستايل كروت الأهداف - حركات قوية */
+.social-goal-card-2 {
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 2px solid transparent;
+}
+
+.social-goal-card-2:hover {
+    transform: translateY(-15px) scale(1.02);
+    box-shadow: 0 30px 60px -12px rgba(212, 175, 55, 0.2);
+    border-color: rgba(212, 175, 55, 0.1);
+}
+
+/* تخصيص السكرول بار */
+::-webkit-scrollbar { width: 7px; }
+::-webkit-scrollbar-track { background: #f1f1f1; }
+::-webkit-scrollbar-thumb { background: var(--social-navy); border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: var(--social-peach); }
+/* حافظت على كل الألوان الأصلية مع تحسين الوضوح */
+:root {
+    --social-navy: #001F3F; 
+    --social-gold: #D4AF37; 
+    --social-peach: #FF7F50; 
+    --social-sky: #E3F2FD; 
+}
+
+/* تحسين وضوح الكلمات فوق التدرجات */
+.text-transparent.bg-clip-text {
+    filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.3));
+    font-weight: 900;
+}
+
+/* ستايل الكروت الأصلي بدون حذف أي تفاصيل */
+.social-goal-card-2 {
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 2px solid transparent;
+    background-color: white;
+}

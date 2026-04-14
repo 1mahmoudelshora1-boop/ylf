@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap');
+
+body {
+    font-family: 'Cairo', sans-serif;
+    text-align: right;
+    background-color: #0a0f1d;
+}
+
+/* تأثير الناف بار عند النزول */
+.active-nav-3.scrolled > div {
+    background: rgba(17, 24, 39, 0.95);
+    border-color: #3b82f6;
+    padding: 10px 20px !important;
+}
+
+/* كروت الأهداف - حركات تقنية */
+.target-card {
+    transition: all 0.4s ease;
+    cursor: default;
+}
+
+.target-card:hover {
+    transform: translateY(-10px) rotateX(5deg);
+    box-shadow: 0 20px 40px rgba(59, 130, 246, 0.1);
+}
+
+/* ستايل الفعاليات */
+.event-chip {
+    transition: all 0.3s ease;
+}
+
+.event-chip:hover {
+    transform: translateX(-10px);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* سكرول بار أزرق */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-thumb { background: #3b82f6; border-radius: 10px; }
