@@ -204,3 +204,189 @@ body {
 .sizyy{
     font-size: 16px;
 }
+/* تأثيرات النيون التفاعلية (Spritz Neon) */
+.spritz-neon-card {
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    background: linear-gradient(135deg, rgba(17,24,39,1) 0%, rgba(10,15,28,1) 100%);
+}
+
+.spritz-timeline-item:hover .spritz-neon-card {
+    transform: scale(1.03);
+}
+
+.spritz-photo-container {
+    perspective: 1000px;
+}
+
+.spritz-photo-container img {
+    transition: all 0.6s ease;
+    filter: drop-shadow(0 0 10px rgba(0,0,0,0.5));
+}
+
+.spritz-timeline-item:hover .spritz-photo-container img {
+    transform: rotateY(-5deg) rotateX(2deg) scale(1.05);
+    filter: drop-shadow(0 15px 30px rgba(212,175,55,0.3)); /* Glow ملون حسب اليوم */
+}
+
+/* تعديل تأثير النيون للصور حسب اليوم */
+.spritz-timeline-item:nth-child(2):hover .spritz-photo-container img {
+    filter: drop-shadow(0 15px 30px rgba(168,85,247,0.3)); /* Purple */
+}
+.spritz-timeline-item:nth-child(3):hover .spritz-photo-container img {
+    filter: drop-shadow(0 15px 30px rgba(34,211,238,0.3)); /* Cyan */
+}
+.spritz-timeline-item:nth-child(4):hover .spritz-photo-container img {
+    filter: drop-shadow(0 15px 30px rgba(34,197,94,0.3)); /* Green */
+}
+.middle{
+    display: flex;
+    text-align: center;
+}
+/* إجبار الألوان في الـ Light Mode بناءً على كلاس html */
+html:not(.dark) #interactive-timeline { background-color: #f8f9fa !important; }
+html:not(.dark) .spritz-neon-card { background-color: #ffffff !important; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+html:not(.dark) .spritz-neon-card h3 { color: #001F3F !important; }
+html:not(.dark) .spritz-neon-card p { color: #4b5563 !important; }
+
+/* تأثير النيون القوي جداً عند المرور بالماوس */
+.spritz-timeline-item:nth-child(1):hover .spritz-neon-card { box-shadow: 0 0 50px rgba(212, 175, 55, 0.5); transform: translateY(-10px) scale(1.02); }
+.spritz-timeline-item:nth-child(2):hover .spritz-neon-card { box-shadow: 0 0 50px rgba(168, 85, 247, 0.5); transform: translateY(-10px) scale(1.02); }
+.spritz-timeline-item:nth-child(3):hover .spritz-neon-card { box-shadow: 0 0 50px rgba(34, 211, 238, 0.5); transform: translateY(-10px) scale(1.02); }
+.spritz-timeline-item:nth-child(4):hover .spritz-neon-card { box-shadow: 0 0 50px rgba(34, 197, 94, 0.5); transform: translateY(-10px) scale(1.02); }
+
+/* حركة الصور 3D */
+.spritz-photo-container img {
+    transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.spritz-timeline-item:hover .spritz-photo-container img {
+    transform: rotateY(-10deg) rotateX(5deg) scale(1.1);
+    filter: drop-shadow(0 20px 40px rgba(0,0,0,0.3));
+}
+
+/* إضاءة بسيطة تتبع الماوس داخل المربع */
+.spritz-neon-card::before {
+    content: '';
+    position: absolute;
+    top: var(--y, 50%);
+    left: var(--x, 50%);
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%);
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    transition: opacity 0.3s;
+    opacity: 0;
+}
+.spritz-neon-card:hover::before { opacity: 1; }
+/* --- 1. تغيير لون العنوان الرئيسي في الوضع الأبيض --- */
+/* لما الـ html ميكونش فيه كلاس dark */
+html:not(.dark) #interactive-timeline h2 {
+    color: #001F3F !important; /* لون الكحلي بتاعنا بدل الأبيض */
+    text-shadow: none !important; /* نشيل التوهج عشان يبان بوضوح في الخلفية الفاتحة */
+}
+
+/* --- 2. تغيير لون المربعات في الوضع الأبيض --- */
+html:not(.dark) .spritz-neon-card {
+    background-color: #ffffff !important; /* المربع يبقى أبيض */
+    border-color: rgba(0, 31, 63, 0.1) !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08) !important;
+}
+
+/* --- 3. تغيير لون النصوص داخل المربعات في الوضع الأبيض --- */
+html:not(.dark) .spritz-neon-card h3 {
+    color: #001F3F !important; /* العناوين تبقى كحلي */
+}
+
+html:not(.dark) .spritz-neon-card p {
+    color: #4b5563 !important; /* النصوص تبقى رمادي غامق */
+}
+
+/* --- 4. حركة المربع وتقوية النيون (زي ما طلبت) --- */
+/* المربع بيتحرك لفوق 10 بكسل مع زاوية ميل بسيطة 3D */
+.spritz-timeline-item:hover .spritz-neon-card {
+    transform: translateY(-10px) rotateX(4deg);
+    z-index: 20;
+}
+
+/* تقوية إضاءة النيون حسب اليوم عند الـ Hover */
+/* اليوم الأول - ذهبي */
+.spritz-timeline-item:nth-child(1):hover .spritz-neon-card { 
+    box-shadow: 0 0 50px rgba(212, 175, 55, 0.5) !important; 
+}
+/* اليوم الثاني - بنفسجي */
+.spritz-timeline-item:nth-child(2):hover .spritz-neon-card { 
+    box-shadow: 0 0 50px rgba(168, 85, 247, 0.5) !important; 
+}
+/* اليوم الثالث - سماوي */
+.spritz-timeline-item:nth-child(3):hover .spritz-neon-card { 
+    box-shadow: 0 0 50px rgba(34, 211, 238, 0.5) !important; 
+}
+/* اليوم الرابع - أخضر */
+.spritz-timeline-item:nth-child(4):hover .spritz-neon-card { 
+    box-shadow: 0 0 50px rgba(34, 197, 94, 0.5) !important; 
+}
+
+/* --- 5. حركة الصورة 3D --- */
+.spritz-timeline-item:hover .spritz-photo-container img {
+    transform: scale(1.08) rotateY(-10deg);
+    filter: drop-shadow(0 20px 40px rgba(0,0,0,0.3));
+}
+/* --- جودة عالية وتغيير شامل للوضع الفاتح --- */
+
+html:not(.dark) #interactive-timeline {
+    background-color: #f8fafc !important; /* خلفية السكشن فاتحة */
+}
+
+/* 1. تحويل المربعات من اللون الداكن للأبيض */
+html:not(.dark) .spritz-neon-card {
+    background-color: #ffffff !important;
+    background-image: none !important; /* إلغاء أي تدرج غامق */
+    border: 1px solid #e2e8f0 !important;
+    box-shadow: 0 10px 25px rgba(0, 31, 63, 0.05) !important;
+}
+
+/* 2. تغيير لون "محطات المبادرة" والعناوين الفرعية */
+html:not(.dark) #interactive-timeline h2, 
+html:not(.dark) #interactive-timeline h3 {
+    color: #001F3F !important; /* الكحلي المعتمد */
+    text-shadow: none !important;
+}
+
+/* 3. تغيير لون النص الوصفي (تحت العنوان الرئيسي وداخل المربعات) */
+html:not(.dark) #interactive-timeline p {
+    color: #475569 !important; /* رمادي احترافي واضح */
+}
+
+/* 4. تغيير لون الأيقونات والنصوص الصغيرة في الأسفل */
+html:not(.dark) .spritz-neon-card div, 
+html:not(.dark) .spritz-neon-card i {
+    color: #64748b !important;
+    border-color: #f1f5f9 !important;
+}
+
+/* --- تعزيز الحركات (الطلب السابق) --- */
+
+/* حركة المربعات عند الماوس */
+.spritz-neon-card {
+    transition: all 0.5s cubic-bezier(0.2, 1, 0.3, 1) !important;
+}
+
+.spritz-timeline-item:hover .spritz-neon-card {
+    transform: translateY(-12px) rotateX(4deg) !important;
+}
+
+/* حركة الصور 3D */
+.spritz-photo-container img {
+    transition: all 0.6s ease-in-out !important;
+}
+
+.spritz-timeline-item:hover .spritz-photo-container img {
+    transform: scale(1.06) rotateY(-10deg) rotateX(2deg) !important;
+    filter: drop-shadow(0 25px 50px rgba(0,0,0,0.2)) !important;
+}
+
+/* تقوية النيون في الوضع الداكن فقط عشان ميبوظش الشكل في الفاتح */
+.dark .spritz-timeline-item:nth-child(1):hover .spritz-neon-card { box-shadow: 0 0 50px rgba(212, 175, 55, 0.4) !important; }
+.dark .spritz-timeline-item:nth-child(2):hover .spritz-neon-card { box-shadow: 0 0 50px rgba(168, 85, 247, 0.4) !important; }
+.dark .spritz-timeline-item:nth-child(3):hover .spritz-neon-card { box-shadow: 0 0 50px rgba(34, 211, 238, 0.4) !important; }
+.dark .spritz-timeline-item:nth-child(4):hover .spritz-neon-card { box-shadow: 0 0 50px rgba(34, 197, 94, 0.4) !important; }
